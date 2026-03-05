@@ -1,0 +1,157 @@
+/* ============================================
+   PRODUCT FEATURES SECTION — Scroll canvas
+   ============================================ */
+.pf {
+    position: relative;
+    height: 600vh;
+    background: #fff;
+}
+
+.pf__canvas-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #fff;
+}
+
+.pf__canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pf__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.pf__spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #e5e5e5;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: pfSpin 0.7s linear infinite;
+}
+
+@keyframes pfSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Overlays */
+.pf__overlay {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin-top: -100vh;
+    pointer-events: none;
+    z-index: 5;
+    will-change: opacity;
+}
+
+/* Centered big title */
+.pf__overlay--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    padding: 0 24px;
+}
+
+.pf__big-title {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 10vw, 128px);
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+}
+
+.pf__big-sub {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: #888;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+/* Split callouts */
+.pf__overlay--split {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 clamp(32px, 5vw, 80px) clamp(48px, 6vh, 96px);
+}
+
+.pf__callout {
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    will-change: transform;
+}
+
+.pf__callout--right {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.pf__callout-line {
+    width: 32px;
+    height: 1.5px;
+    background: #111;
+    margin-bottom: 4px;
+}
+
+.pf__callout--right .pf__callout-line {
+    align-self: flex-end;
+}
+
+.pf__callout-label {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 600;
+    color: #111;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.pf__callout-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+    .pf {
+        height: 500vh;
+    }
+
+    .pf__overlay--split {
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 24px;
+        padding-bottom: 40px;
+    }
+
+    .pf__callout {
+        max-width: 100%;
+    }
+
+    .pf__callout--right {
+        text-align: left;
+        align-items: flex-start;
+    }
+}

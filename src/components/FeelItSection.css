@@ -1,0 +1,168 @@
+/* ============================================
+   FEEL IT — Comfort & Design Section
+   ============================================ */
+.feelit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    background: #fff;
+    overflow: hidden;
+}
+
+/* Image column — entrance via GSAP */
+.feelit__image-col {
+    position: relative;
+    overflow: hidden;
+}
+
+.feelit__image-wrap {
+    position: absolute;
+    inset: 0;
+}
+
+.feelit__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.feelit__image--loaded {
+    opacity: 1;
+}
+
+.feelit__vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            transparent 60%,
+            rgba(255, 255, 255, 0.6) 100%);
+}
+
+/* Text column — entrance via GSAP */
+.feelit__text-col {
+    display: flex;
+    align-items: center;
+    padding: clamp(64px, 10vh, 120px) clamp(32px, 5vw, 80px);
+    background: #fff;
+}
+
+.feelit__text-inner {
+    max-width: 480px;
+}
+
+.feelit__eyebrow {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-lg);
+}
+
+.feelit__title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 5.5vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 2px;
+}
+
+/* Each word is a GSAP stagger target */
+.feelit__title-word {
+    display: block;
+    will-change: transform, opacity;
+}
+
+/* Gradient shimmer accent */
+.feelit__title-accent {
+    background: linear-gradient(90deg, #0071e3, #34aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feelit__subtitle {
+    font-size: clamp(15px, 1.5vw, 17px);
+    color: var(--color-gray-500);
+    line-height: 1.7;
+    margin-bottom: var(--space-2xl);
+}
+
+/* Detail pills */
+.feelit__moments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feelit__moment {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1.5px solid var(--color-gray-200);
+    background: var(--color-gray-50);
+    cursor: default;
+    will-change: transform;
+}
+
+.feelit__moment-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    min-width: 130px;
+    letter-spacing: -0.01em;
+}
+
+.feelit__moment-caption {
+    font-size: 14px;
+    color: var(--color-gray-500);
+    line-height: 1.4;
+    flex: 1;
+}
+
+.feelit__moment-arrow {
+    font-size: 16px;
+    color: var(--color-accent);
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .feelit {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh auto;
+    }
+
+    .feelit__image-col {
+        position: relative;
+        height: 50vh;
+    }
+
+    .feelit__vignette {
+        background: linear-gradient(to bottom,
+                transparent 60%,
+                rgba(255, 255, 255, 0.7) 100%);
+    }
+
+    .feelit__text-col {
+        padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .feelit__title {
+        font-size: clamp(36px, 8vw, 56px);
+    }
+}

@@ -1,0 +1,172 @@
+/* ============================================
+   SPECS / TECH SECTION — Pure black, cinematic
+   ============================================ */
+.specs {
+    position: relative;
+    padding: var(--space-5xl) clamp(20px, 6vw, 80px);
+    background: #000;
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.specs__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+}
+
+/* Image Column */
+.specs__image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.specs__img-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glowing aura behind the chip */
+.specs__aura {
+    position: absolute;
+    inset: -15%;
+    background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.28) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    will-change: opacity, transform;
+}
+
+.specs__processor-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 0;
+}
+
+/* Content Column */
+.specs__content-col {
+    position: relative;
+    /* Entrance handled by GSAP */
+}
+
+/* Title lines — clip-path used by GSAP */
+.specs__title-line {
+    display: block;
+    clip-path: inset(100% 0% 0% 0%);
+}
+
+/* Override section-title to be block so lines stack */
+.specs .section-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.specs .section-eyebrow {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.specs .section-title {
+    color: var(--color-white);
+}
+
+.specs .section-subtitle {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* Spec Grid */
+.specs__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: var(--space-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.specs__item {
+    padding: 28px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    /* Entrance handled by GSAP */
+    transition: background 0.2s ease;
+}
+
+/* Remove right border on last in row, bottom border on last row */
+.specs__item:nth-child(3),
+.specs__item:nth-child(6) {
+    border-right: none;
+}
+
+.specs__item:nth-child(4),
+.specs__item:nth-child(5),
+.specs__item:nth-child(6) {
+    border-bottom: none;
+}
+
+.specs__item-value {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+}
+
+.specs__item-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .specs__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .specs__processor-img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .specs__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .specs__item:nth-child(3) {
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .specs__item:nth-child(2),
+    .specs__item:nth-child(4) {
+        border-right: none;
+    }
+
+    .specs__item:nth-child(5),
+    .specs__item:nth-child(6) {
+        border-bottom: none;
+    }
+
+    .specs__item:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .specs__item:nth-child(3) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
