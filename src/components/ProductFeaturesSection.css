@@ -134,24 +134,45 @@
     line-height: 1.7;
 }
 
-@media (max-width: 640px) {
-    .pf {
-        height: 500vh;
-    }
+/* Mobile Overrides (Static Layout) */
+.pf--mobile {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-    .pf__overlay--split {
-        align-items: flex-end;
-        flex-direction: column;
-        gap: 24px;
-        padding-bottom: 40px;
-    }
+.pf__mobile-visual {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: var(--space-3xl);
+}
 
-    .pf__callout {
-        max-width: 100%;
-    }
+.pf__mobile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+}
 
-    .pf__callout--right {
-        text-align: left;
-        align-items: flex-start;
-    }
+.pf__mobile-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    padding: var(--space-xl) clamp(24px, 5vw, 40px) var(--space-4xl);
+    background: #fff;
+}
+
+.pf--mobile .pf__callout {
+    max-width: 100%;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.pf--mobile .pf__callout--right .pf__callout-line {
+    align-self: flex-start;
 }

@@ -20,6 +20,7 @@ export default function useScrollCanvas({
     prefix = 'ezgif-frame-',
     extension = '.jpg',
     padLength = 3,
+    disabled = false,
 }) {
     const canvasRef = useRef(null)
     const containerRef = useRef(null)
@@ -40,6 +41,7 @@ export default function useScrollCanvas({
 
     // Preload all images
     useEffect(() => {
+        if (disabled) return
         let cancelled = false
         const images = []
 
@@ -92,7 +94,7 @@ export default function useScrollCanvas({
         return () => {
             cancelled = true
         }
-    }, [frameCount, getFramePath])
+    }, [frameCount, getFramePath, disabled])
 
     // Draw frame on canvas
     const drawFrame = useCallback(

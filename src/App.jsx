@@ -14,7 +14,10 @@ import Footer from './components/Footer'
 import './App.css'
 
 function App() {
-    const [showSplash, setShowSplash] = useState(true)
+    const [showSplash, setShowSplash] = useState(() => {
+        // Disable splash screen on mobile devices based on screen width
+        return window.innerWidth >= 768;
+    })
 
     useEffect(() => {
         if (showSplash) {

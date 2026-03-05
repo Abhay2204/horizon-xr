@@ -1,8 +1,16 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import useScrollCanvas from '../hooks/useScrollCanvas'
 import './ProductFeaturesSection.css'
 
 export default function ProductFeaturesSection() {
+    const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768)
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768)
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
     const { canvasRef, progress, currentFrame, isLoaded } = useScrollCanvas({
         folder: '/assets/product features',
         frameCount: 55,
@@ -10,7 +18,38 @@ export default function ProductFeaturesSection() {
         prefix: 'ezgif-frame-',
         extension: '.jpg',
         padLength: 3,
+        disabled: isMobile
     })
+
+    if (isMobile) {
+        return (
+            <section className="pf pf--mobile" id="product-features-section">
+                <div className="pf__mobile-visual">
+                    <img src="/assets/product features/ezgif-frame-078.jpg" alt="Horizon XR Product Features" className="pf__mobile-img" />
+                </div>
+                <div className="pf__mobile-content">
+                    <div className="pf__callout">
+                        <div className="pf__callout-line" />
+                        <span className="pf__callout-label">Ultra-Wide Curved Display</span>
+                        <p className="pf__callout-desc">
+                            Dual micro-OLED panels.<br />
+                            3,660 × 3,200 px per eye.<br />
+                            5,000 nits peak brightness.
+                        </p>
+                    </div>
+                    <div className="pf__callout pf__callout--right">
+                        <div className="pf__callout-line" />
+                        <span className="pf__callout-label">Precision Fit Dial</span>
+                        <p className="pf__callout-desc">
+                            Titanium construction.<br />
+                            Infinite micro-adjustment.<br />
+                            For the perfect fit.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        )
+    }
 
     // Frames 1–78:
     // 0–0.15: Fade in title "Look closer."
@@ -72,13 +111,13 @@ export default function ProductFeaturesSection() {
 
 
             {/* Phase 1: First feature callout */}
-            <div
-                className="pf__overlay pf__overlay--split"
-                style={{ opacity: feat1Opacity, pointerEvents: 'none' }}
-            >
+            <div className="pf__overlay pf__overlay--split" style={{ pointerEvents: 'none' }}>
                 <div
                     className="pf__callout pf__callout--left"
-                    style={{ transform: `translateY(${feat1Y}px)` }}
+                    style={{
+                        transform: `translateY(${feat1Y}px)`,
+                        opacity: feat1Opacity
+                    }}
                 >
                     <div className="pf__callout-line" />
                     <span className="pf__callout-label">Ultra-Wide Curved Display</span>
@@ -90,7 +129,10 @@ export default function ProductFeaturesSection() {
                 </div>
                 <div
                     className="pf__callout pf__callout--right"
-                    style={{ transform: `translateY(${feat1Y}px)` }}
+                    style={{
+                        transform: `translateY(${feat2Y}px)`,
+                        opacity: feat2Opacity
+                    }}
                 >
                     <div className="pf__callout-line" />
                     <span className="pf__callout-label">Precision Fit Dial</span>

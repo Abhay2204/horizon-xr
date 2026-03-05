@@ -14,8 +14,13 @@ export default function SplashScreen({ onComplete }) {
         }, 800)
     }
 
-    // Attempt to force play the video if browser autoplay policies block it initially
     useEffect(() => {
+        // Skip splash screen entirely on mobile view
+        if (window.innerWidth < 768) {
+            handleVideoEnd()
+            return;
+        }
+
         if (videoRef.current) {
             videoRef.current.play().catch(error => {
                 console.warn("Autoplay was prevented:", error)
