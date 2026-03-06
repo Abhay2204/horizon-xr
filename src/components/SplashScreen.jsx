@@ -41,7 +41,6 @@ export default function SplashScreen({ onComplete }) {
                         ref={videoRef}
                         className="splash__video"
                         src="/assets/splash.mp4"
-                        autoPlay
                         muted
                         playsInline
                         onEnded={handleVideoEnd}

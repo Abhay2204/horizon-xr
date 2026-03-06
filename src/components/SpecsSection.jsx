@@ -31,13 +31,11 @@ function AnimatedNumber({ numeric, suffix, prefix, label }) {
             onEnter: () => {
                 if (triggered.current) return
                 triggered.current = true
-                gsap.fromTo(
-                    { val: 0 },
-                    {
-                        val: numeric, duration: 1.6, ease: 'power3.out',
-                        onUpdate: function () { setDisplayed(Math.round(this.targets()[0].val)) }
-                    }
-                )
+                const obj = { val: 0 }
+                gsap.to(obj, {
+                    val: numeric, duration: 1.6, ease: 'power3.out',
+                    onUpdate: () => setDisplayed(Math.round(obj.val))
+                })
             },
         })
     }, [numeric])

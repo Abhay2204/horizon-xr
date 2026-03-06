@@ -21,42 +21,6 @@ export default function ProductFeaturesSection() {
         disabled: isMobile
     })
 
-    if (isMobile) {
-        return (
-            <section className="pf pf--mobile" id="product-features-section">
-                <div className="pf__mobile-visual">
-                    <img src="/assets/product features/ezgif-frame-078.jpg" alt="Horizon XR Product Features" className="pf__mobile-img" />
-                </div>
-                <div className="pf__mobile-content">
-                    <div className="pf__callout">
-                        <div className="pf__callout-line" />
-                        <span className="pf__callout-label">Ultra-Wide Curved Display</span>
-                        <p className="pf__callout-desc">
-                            Dual micro-OLED panels.<br />
-                            3,660 × 3,200 px per eye.<br />
-                            5,000 nits peak brightness.
-                        </p>
-                    </div>
-                    <div className="pf__callout pf__callout--right">
-                        <div className="pf__callout-line" />
-                        <span className="pf__callout-label">Precision Fit Dial</span>
-                        <p className="pf__callout-desc">
-                            Titanium construction.<br />
-                            Infinite micro-adjustment.<br />
-                            For the perfect fit.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-
-    // Frames 1–78:
-    // 0–0.15: Fade in title "Look closer."
-    // 0.15–0.45: Title fades out, feature callout 1 fades in (left)
-    // 0.45–0.75: Feature callout 2 fades in (right)
-    // 0.75–1.0: All text fades out — product dominates
-
     const titleOpacity = useMemo(() => {
         if (progress < 0.04) return progress / 0.04
         if (progress < 0.14) return 1
@@ -95,6 +59,42 @@ export default function ProductFeaturesSection() {
         if (progress < 0.84) return -30 * ((progress - 0.74) / 0.10)
         return -30
     }, [progress])
+
+    if (isMobile) {
+        return (
+            <section className="pf pf--mobile" id="product-features-section">
+                <div className="pf__mobile-visual">
+                    <img src="/assets/product features/ezgif-frame-078.jpg" alt="Horizon XR Product Features" className="pf__mobile-img" />
+                </div>
+                <div className="pf__mobile-content">
+                    <div className="pf__callout">
+                        <div className="pf__callout-line" />
+                        <span className="pf__callout-label">Ultra-Wide Curved Display</span>
+                        <p className="pf__callout-desc">
+                            Dual micro-OLED panels.<br />
+                            3,660 × 3,200 px per eye.<br />
+                            5,000 nits peak brightness.
+                        </p>
+                    </div>
+                    <div className="pf__callout pf__callout--right">
+                        <div className="pf__callout-line" />
+                        <span className="pf__callout-label">Precision Fit Dial</span>
+                        <p className="pf__callout-desc">
+                            Titanium construction.<br />
+                            Infinite micro-adjustment.<br />
+                            For the perfect fit.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    // Frames 1–78:
+    // 0–0.15: Fade in title "Look closer."
+    // 0.15–0.45: Title fades out, feature callout 1 fades in (left)
+    // 0.45–0.75: Feature callout 2 fades in (right)
+    // 0.75–1.0: All text fades out — product dominates
 
     return (
         <section className="pf" id="product-features-section" data-scroll-container>
