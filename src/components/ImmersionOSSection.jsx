@@ -42,8 +42,8 @@ export default function ImmersionOSSection() {
         target: sectionRef,
         offset: ['start end', 'end start'],
     })
-    const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
-    const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.0, 1.06])
+    const imageY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
+    const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1.2, 1.3])
 
     // GSAP entrance — content slides up
     useEffect(() => {

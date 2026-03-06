@@ -32,8 +32,8 @@ export default function ControllerSection() {
         target: sectionRef,
         offset: ['start end', 'end start'],
     })
-    const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
-    const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.12, 1.0, 1.08])
+    const bgY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
+    const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1.2, 1.3])
 
     useEffect(() => {
         const ctx = gsap.context(() => {

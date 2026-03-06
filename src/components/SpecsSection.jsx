@@ -59,8 +59,8 @@ export default function SpecsSection() {
         target: sectionRef,
         offset: ['start end', 'end start'],
     })
-    const imgY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
-    const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.0, 1.06])
+    const imgY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
+    const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1.2, 1.3])
 
     useEffect(() => {
         const ctx = gsap.context(() => {

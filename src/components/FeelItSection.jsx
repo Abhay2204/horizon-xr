@@ -25,7 +25,8 @@ export default function FeelItSection() {
         target: sectionRef,
         offset: ['start end', 'end start'],
     })
-    const imageY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
+    const imageY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
+    const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1.2, 1.3])
 
     // GSAP — image slide in
     useEffect(() => {
@@ -104,7 +105,7 @@ export default function FeelItSection() {
                         alt="Horizon XR — crafted for comfort"
                         className={`feelit__image ${imgLoaded ? 'feelit__image--loaded' : ''}`}
                         onLoad={() => setImgLoaded(true)}
-                        style={{ y: imageY }}
+                        style={{ y: imageY, scale: imageScale }}
                     />
                     <div className="feelit__vignette" />
                 </div>
